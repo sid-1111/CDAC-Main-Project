@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Delay Prevention - Olist E-com Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70%;
+            height: 3px;
+            background-color: #6366f1;
+            border-radius: 9999px;
+        }
+        pre {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .accordion-button {
+            cursor: pointer;
+            position: relative;
+            padding-right: 2.5rem;
+        }
+        .accordion-button::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-button::after {
+            content: '-';
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px; /* A large value to allow the transition */
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    {% extends "base.html" %}
+
+{% block title %}Delivery Delay Prevention - Olist E-com Analysis{% endblock %}
+
+{% block content %}
+    <h2 class="section-heading text-5xl font-extrabold text-gray-900 mb-12 text-center">Delivery Delay Prevention</h2>
+
+    <div class="bg-white rounded-lg shadow-xl p-8 mb-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-6">Feature Overview & Details</h3>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            Our Delivery Delay Analysis module is designed to identify and predict potential bottlenecks within the e-commerce delivery logistics, helping businesses understand and mitigate shipment delays.
+        </p>
+
+        <div class="mt-8">
+            <h4 class="text-2xl font-bold text-gray-800 mb-4">1. Purpose & Motivation</h4>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                <strong>Problem Solved:</strong> Late deliveries significantly impact customer satisfaction and can lead to negative reviews, refunds, and lost business. Manually tracking and predicting these delays is impossible at scale. This module provides insights to proactively address delivery risks.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                <strong>Actionable Insights:</strong> It helps businesses by:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 mb-6 ml-4">
+                <li>Identifying high-risk regions or problematic sellers/carriers.</li>
+                <li>Anticipating delays for specific orders.</li>
+                <li>Enabling proactive customer communication about potential delays.</li>
+                <li>Optimizing logistics routes and partner performance.</li>
+            </ul>
+
+            <h4 class="text-2xl font-bold text-gray-800 mb-4">2. Data Used</h4>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This module primarily relies on historical delivery data. Conceptually, it would draw from:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 mb-6 ml-4">
+                <li><strong>Orders Data (e.g., `orders.csv`):</strong> Containing order IDs, dates, estimated delivery dates, and actual delivery dates.</li>
+                <li><strong>Seller Information (e.g., `sellers.csv`):</strong> Performance metrics, location.</li>
+                <li><strong>Geographical Data:</strong> Region/city information.</li>
+            </ul>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                From this, key features like `delivery_delay` (calculated as `actual_delivery_date - estimated_delivery_date`) and patterns across various dimensions are derived.
+            </p>
+
+            <h4 class="text-2xl font-bold text-gray-800 mb-4">3. Analytical Approach & Underlying Mechanism</h4>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                <strong>Core Strategy (Conceptual):</strong> My primary approach for robust delivery delay analysis is to leverage Spark SQL (as demonstrated in my `Spark_SQL_Delay_Delevery_Analysis.ipynb` notebook). Spark SQL is ideal for processing large volumes of structured and semi-structured delivery logs to:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 mb-6 ml-4">
+                <li>Perform complex joins and aggregations across massive datasets.</li>
+                <li>Identify historical patterns of delays based on region, seller_id, product_category, delivery method, and seasonal factors.</li>
+                <li>Derive statistical insights into average delays, outlier delays, and the probability of delay for specific routes/partners.</li>
+                <li>Ultimately, pre-compute "risk zones" or predictive rules.</li>
+            </ul>
+        </div>
+
+        <p class="text-lg text-gray-700 leading-relaxed mt-8 border-t pt-4">
+            This proactive approach allows businesses to take timely corrective actions, such as
+            rerouting packages, communicating transparently with customers about revised delivery times,
+            or offering alternative solutions. Minimizing delivery disruptions significantly enhances customer
+            satisfaction, reduces support inquiries, and protects brand reputation.
+        </p>
+    </div>
+    <div class="bg-white rounded-lg shadow-xl p-8">
+        <h3 class="text-3xl font-bold text-gray-800 mb-6">Dedicated Dashboard View</h3>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            Explore a focused Power BI dashboard providing a real-time overview of potential delivery delays,
+            risk assessments, and actionable insights to maintain delivery excellence.
+        </p>
+        <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+            <iframe
+                src="https://app.powerbi.com/reportEmbed?reportId=cf2bcca9-634d-47de-a554-a87340488e68&autoAuth=true&ctid=cc819eae-433f-4ebe-8a84-8e6f68ae7345"
+                frameborder="0"
+                allowFullScreen="true"
+                class="w-full h-full"
+            ></iframe>
+        </div>
+        <p class="text-center text-gray-600 mt-4">
+            
+        </p>
+    </div>
+{% endblock %}
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 px-6 mt-auto">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 E-commerce Intelligence Team 007. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script>
+    // JavaScript for accordion functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        accordionItems.forEach(item => {
+            const button = item.querySelector('.accordion-button');
+            button.addEventListener('click', () => {
+                // Close all other open items
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle the clicked item
+                item.classList.toggle('active');
+            });
+        });
+    });
+</script>
+</body>
+</html>

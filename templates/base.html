@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-commerce Intelligence{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #333;
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70%;
+            height: 3px; /* Reduced height for a cleaner look */
+            background-color: #6366f1; /* Indigo 500 */
+            border-radius: 9999px;
+        }
+        pre {
+            background-color: #2d3748; /* Darker background for code */
+            color: #e2e8f0; /* Light text for code */
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+            font-family: 'Fira Code', 'Cascadia Code', monospace; /* Monospace font */
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Custom form and result styles - ADDED to base.html for global availability */
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4a5568; /* Gray 700 */
+        }
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group select {
+            border: 1px solid #e2e8f0; /* Gray 200 */
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #6366f1; /* Indigo 500 */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        .form-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .form-button-primary {
+            background-color: #6366f1; /* Indigo 500 */
+            color: white;
+        }
+        .form-button-primary:hover {
+            background-color: #4f46e5; /* Indigo 600 */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        .result-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #e0f2fe; /* Light blue background */
+            border: 1px solid #90cdf4; /* Blue 300 border */
+            border-radius: 0.5rem;
+            color: #2c5282; /* Blue 800 text */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        .result-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2c5282;
+        }
+        .result-box p {
+            margin-bottom: 0.5rem;
+        }
+        .error-message {
+            color: #dc2626; /* Red 600 */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    {# --- START: GLOBAL HEADER --- #}
+    <header class="bg-white shadow-lg py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-gray-800">E-commerce Intelligence</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="{{ url_for('index') }}#overview" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Overview</a></li>
+                    <li><a href="{{ url_for('index') }}#features" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Features</a></li>
+                    <li><a href="{{ url_for('index') }}#dashboard" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Dashboard</a></li>
+                    <li><a href="{{ url_for('support_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Support</a></li>
+                    <li><a href="{{ url_for('team_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Connect with Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {# --- END: GLOBAL HEADER --- #}
+
+    <main class="flex-grow py-16 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    {# --- START: GLOBAL FOOTER --- #}
+    <footer class="bg-gray-800 text-white py-8 px-6 mt-auto">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 E-commerce Intelligence. All rights reserved.</p>
+        </div>
+    </footer>
+    {# --- END: GLOBAL FOOTER --- #}
+
+    {# IMPORTANT: This is where page-specific JavaScript will be inserted #}
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

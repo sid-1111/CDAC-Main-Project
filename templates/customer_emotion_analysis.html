@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Emotion Analysis - E-commerce Intelligence{% endblock %}
+
+{% block content %}
+    <h2 class="section-heading text-5xl font-extrabold text-gray-900 mb-12 text-center">Customer Emotion Analysis</h2>
+
+    <div class="bg-white rounded-lg shadow-xl p-8 mb-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-6">Feature Overview & Details</h3>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+          A Sentiment Analysis model is a sophisticated Artificial Intelligence (AI) and Machine Learning (ML) tool designed to automatically understand, interpret, and classify the emotional tone or opinion expressed within human-written text. Its fundamental purpose is to categorize sentiment as positive, negative, or neutral, though some advanced models can identify more granular emotions like joy, anger, or surprise.
+        </p>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-xl mx-auto"> {# Removed max-w-3xl from here to allow it to expand for side-by-side #}
+    <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">Test Your Sentiment Analyzer</h3>
+    <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+        Enter any text below and get an instant sentiment prediction.
+    </p>
+
+    <div class="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0"> {# Flex container for side-by-side layout #}
+
+        {# Input Form - Left Side #}
+        <div class="flex-1"> {# Takes up available space #}
+            <form method="POST" action="{{ url_for('sentiment_route') }}" class="h-full flex flex-col"> {# Ensure form itself uses flex column to push button to bottom if needed #}
+                <div class="form-group flex-grow"> {# Allows textarea to grow #}
+                    <label for="review_text" class="text-lg">Enter Customer Review Text:</label>
+                    <textarea id="review_text" name="review_text" rows="10" required
+                              class="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm
+                                     resize-y text-gray-800 h-full" {# Added h-full to textarea #}
+                              placeholder="E.g., 'The product arrived quickly and exceeded my expectations!'"
+                    >{{ request.form.get('review_text', '') }}</textarea>
+                </div>
+                <button type="submit" class="form-button form-button-primary mt-6 w-full md:w-auto px-6 py-3 text-lg">Analyze Sentiment</button>
+            </form>
+        </div>
+
+        {# Analysis Result - Right Side #}
+        <div class="flex-1 flex items-center justify-center"> {# Takes up available space, centers content vertically #}
+            {% if result %}
+                <div class="result-box w-full"> {# Ensure result box takes full width of its column #}
+                    <h3 class="text-2xl font-bold border-b pb-2 mb-4 border-blue-400">Analysis Result:</h3>
+                    {% if result.error %}
+                        <p class="error-message text-red-700 text-lg"><strong>Error:</strong> {{ result.error }}</p>
+                        <p class="text-gray-700 mt-2">Please ensure the sentiment analysis service is available on the server.</p>
+                    {% else %}
+                        <p class="text-lg mb-2"><strong>Input Review:</strong> <span class="text-gray-800 italic">"{{ result.text }}"</span></p>
+                        <p class="text-xl mb-2"><strong>Predicted Sentiment:</strong> <span class="font-bold {% if result.sentiment == 'Positive' %}text-green-600{% elif result.sentiment == 'Negative' %}text-red-600{% else %}text-yellow-600{% endif %}">
+                            {{ result.sentiment }}
+                        </span></p>
+                        <p class="text-lg mb-2"><strong>Confidence:</strong> <span class="text-blue-700 font-semibold">{{ result.confidence }}</span></p>
+
+                        {% if result.probabilities %}
+                            <div class="mt-5 border-t border-blue-300 pt-4">
+                                <p class="font-semibold text-lg text-blue-800">Probability Distribution:</p>
+                                <ul class="list-none pl-0 mt-2 space-y-1">
+                                    {% for label, prob in result.probabilities.items() %}
+                                        <li class="flex justify-between items-center text-md">
+                                            <span class="font-medium text-gray-700">{{ label }}:</span>
+                                            <span class="font-semibold text-gray-900">{{ prob }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="text-center text-gray-500 p-6 border border-dashed border-gray-300 rounded-lg w-full">
+                    <p class="text-lg">Your sentiment analysis results will appear here after submission.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+    <div class="bg-white rounded-lg shadow-xl p-8 mt-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-6">Dedicated Dashboard View</h3>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            Below is an embedded Power BI dashboard (or a specific view of our main dashboard)
+            focused on Customer Emotion Analysis, providing interactive insights into sentiment trends,
+            key emotional drivers, and performance metrics.
+        </p>
+        <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+            <iframe
+                src="https://app.powerbi.com/reportEmbed?reportId=11f1c2ca-f5ef-4db2-81df-40dd5ff65c8f&autoAuth=true&ctid=cc819eae-433f-4ebe-8a84-8e6f68ae7345"
+                frameborder="0"
+                allowFullScreen="true"
+                class="w-full h-full"
+            ></iframe>
+        </div>
+        <p class="text-center text-gray-600 mt-4">
+        
+        </p>
+    </div>
+{% endblock %}

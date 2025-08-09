@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olist E-Com Intelligence Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc; /* Lighter off-white */
+            color: #1e293b; /* Darker text */
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70%;
+            height: 3px;
+            background-color: #2563eb; /* Blue-600 */
+            border-radius: 9999px;
+        }
+        .gradient-box {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); /* Blue to Indigo gradient */
+            color: white;
+        }
+        .feature-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .feature-card-link:hover .feature-card-content {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+        }
+        .feature-card-content {
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background-color: #4f46e5;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #4338ca;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-gray-800">Olist E-Com Intelligence</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="{{ url_for('index') }}#overview" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Overview</a></li>
+                    <li><a href="{{ url_for('index') }}#features" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Features</a></li>
+                    <li><a href="{{ url_for('index') }}#dashboard" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Dashboard</a></li>
+                    <li><a href="{{ url_for('support_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Support</a></li>
+                    <li><a href="{{ url_for('team_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Connect with Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-24 px-6">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center items-center">
+  <h2 class="text-6xl font-extrabold mb-5 tracking-tight leading-tight text-white animate-writein">
+    OLIST E-COM ANALYSIS
+  </h2>
+</div>
+
+<style>
+@keyframes writeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-writein {
+  animation: writeIn 3s ease-in-out infinite;
+}
+</style>
+
+            <p class="text-xl max-w-4xl mx-auto mb-10 opacity-90 leading-relaxed">Our platform integrates cutting-edge machine learning to deliver predictive insights, optimize operations, and revolutionize customer engagement. From sentiment analysis to proactive logistics, we empower businesses to thrive in the digital marketplace.</p>
+            <a href="{{ url_for('index') }}#features" class="btn-primary px-10 py-4 rounded-full text-lg font-semibold shadow-lg">Discover the Platform</a>
+        </div>
+    </section>
+
+    <section id="overview" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <h3 class="section-heading text-4xl font-bold text-gray-800 mb-12 text-center">Project Overview</h3>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">"This project uses past data from Olist to find useful insights with the help of data analysis, machine learning, and easy-to-understand visuals made in Power BI."</p>
+                    <p class="text-lg text-gray-700 leading-relaxed border-l-4 border-blue-600 pl-4 py-2 bg-blue-50 bg-opacity-50 rounded-r-lg"><div class="text-gray-800 text-base leading-relaxed space-y-4">
+  <p class="font-semibold text-lg">Key Components of the Project:</p>
+
+  <ul class="list-disc list-inside space-y-2">
+    <li>
+      <strong>Sentiment Analysis:</strong><br>
+      Analyzed customer reviews to understand opinions and satisfaction levels.
+    </li>
+    <li>
+      <strong>Time Series Forecasting:</strong><br>
+      Predicted future trends like order volume and revenue using historical data patterns.
+    </li>
+    <li>
+      <strong>Customer, Seller & Product Segmentation:</strong><br>
+      Grouped customers, sellers, and products based on behavior and characteristics for better targeting.
+    </li>
+    <li>
+      <strong>Delay Delivery Analysis (Prevention):</strong><br>
+      Identified and analyzed factors causing delays in delivery using Spark SQL.
+    </li>
+  </ul>
+</div>
+</p>
+                </div>
+                <div class="flex justify-center order-1 md:order-2">
+                    <img src="https://raw.githubusercontent.com/TechwithRahul2003/Olist-E-Commerce-Analysis/main/WhatsApp%20Image%202025-07-27%20at%2020.22.53_90e70a6a.jpg" alt="Data Insights Illustration - Dashboard" class="rounded-2xl shadow-2xl object-cover w-full max-w-3xl transform transition duration-500 hover:scale-105 hover:rotate-1">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h3 class="section-heading text-4xl font-bold text-gray-800 mb-12 text-center">Core Intelligence Modules</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <a href="{{ url_for('sentiment_route') }}" class="feature-card-link">
+                    <div class="gradient-box p-8 rounded-2xl shadow-2xl transition duration-400 ease-in-out feature-card-content h-full flex flex-col items-center text-center">
+                        <div class="text-white text-5xl mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto drop-shadow-lg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M9.75 9.75L12 12m0 0l2.25 2.25M12 12l-2.25 2.25M12 12l2.25-2.25M15.182 15.182l-2.25-2.25M15.182 15.182l2.25 2.25M15.182 15.182l-2.25 2.25M15.182 15.182l2.25-2.25M12 12l-2.25 2.25" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-3">Sentiment Analysis</h4>
+                        <p class="text-gray-200 text-base flex-grow">Our AI engine processes customer reviews and feedback to detect sentiment, identifying key emotions and flagging potential issues before they escalate, ensuring exceptional customer experience.</p>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('delivery_route') }}" class="feature-card-link">
+                    <div class="bg-white p-8 rounded-2xl shadow-2xl transition duration-400 ease-in-out feature-card-content h-full flex flex-col items-center text-center border-t-4 border-blue-600">
+                        <div class="text-blue-600 text-5xl mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18L14.25 12 8.25 6" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 18L21.75 12 15.75 6" />
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-3">Predictive Logistics & Prevention</h4>
+                        <p class="text-gray-700 text-base flex-grow">Using advanced predictive models, we analyze a multitude of factors to identify and prevent potential delivery delays. This proactive approach optimizes your supply chain and boosts customer trust.</p>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('clustering_route') }}" class="feature-card-link">
+                    <div class="gradient-box p-8 rounded-2xl shadow-2xl transition duration-400 ease-in-out feature-card-content h-full flex flex-col items-center text-center">
+                        <div class="text-white text-5xl mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto drop-shadow-lg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 0a2.25 2.25 0 002.25 2.25h12c1.243 0 2.25-1.007 2.25-2.25m-16.5 0a2.25 2.25 0 012.25-2.25h12c1.243 0 2.25 1.007 2.25 2.25m-16.5 0c-1.243 0-2.25 1.007-2.25 2.25v4.5c0 1.243 1.007 2.25 2.25 2.25h16.5c1.243 0 2.25-1.007 2.25-2.25v-4.5c0-1.243-1.007-2.25-2.25-2.25H3.75z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-3">Intelligent Buying Pattern Recognition</h4>
+                        <p class="text-gray-200 text-base flex-grow">We leverage clustering and advanced data analysis to uncover hidden trends in customer behavior. This enables highly personalized marketing campaigns and precise inventory management, maximizing sales potential.</p>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('forecasting_route') }}" class="feature-card-link">
+                    <div class="bg-white p-8 rounded-2xl shadow-2xl transition duration-400 ease-in-out feature-card-content h-full flex flex-col items-center text-center border-t-4 border-blue-600">
+                        <div class="text-blue-600 text-5xl mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.5l6.75 6.75L21 6" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M12 3L7.5 7.5M12 3l4.5 4.5" />
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-3">AI-Powered Sales & Demand Forecasting</h4>
+                        <p class="text-gray-700 text-base flex-grow">Our sophisticated time-series models provide accurate forecasts of future sales. This allows you to strategically plan for demand, optimize resource allocation, and gain a competitive edge in the market.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="py-20 px-6 bg-gray-100">
+        <div class="container mx-auto">
+            <h3 class="section-heading text-4xl font-bold text-gray-800 mb-12 text-center">Interactive Intelligence Dashboard</h3>
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6 h-[500px] md:h-[650px] lg:h-[750px] flex items-center justify-center p-4">
+                <iframe
+                    src="https://app.powerbi.com/reportEmbed?reportId=cf2bcca9-634d-47de-a554-a87340488e68&autoAuth=true&ctid=cc819eae-433f-4ebe-8a84-8e6f68ae7345"
+                    frameborder="0"
+                    allowFullScreen="true"
+                    class="w-full h-full"
+                ></iframe>
+            </div>
+            <p class="text-center text-gray-600 mt-6 max-w-4xl mx-auto text-lg">This dynamic dashboard provides a unified view of your e-commerce operations. Explore insights derived from our machine learning models, visualize key performance indicators, and make data-driven decisions instantly to drive your business forward.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 bg-gray-50">
+       
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8 px-6 mt-auto">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 Olist E-Com Intelligence Team-007 All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

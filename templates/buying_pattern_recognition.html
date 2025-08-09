@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buying Pattern Recognition - Olist E-com Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5; /* Indigo 600 */
+            --secondary-color: #8b5cf6; /* Violet */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 9999px;
+        }
+        .header-gradient {
+            background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        .footer-bg {
+            background-color: #1f2937;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="header-gradient shadow-lg py-4 md:py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-4 md:mb-0">E-commerce Intelligence</h1>
+            <nav class="w-full md:w-auto">
+                <ul class="flex space-x-6">
+                    <li><a href="{{ url_for('index') }}#overview" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Overview</a></li>
+                    <li><a href="{{ url_for('index') }}#features" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Features</a></li>
+                    <li><a href="{{ url_for('index') }}#dashboard" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Dashboard</a></li>
+                    <li><a href="{{ url_for('support_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Support</a></li>
+                    <li><a href="{{ url_for('team_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Connect with Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow py-16 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="section-heading text-5xl font-extrabold text-gray-900 mb-12 text-center">Buying Pattern Recognition</h2>
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6">Feature Overview & Details</h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    The Buying Pattern Recognition module employs advanced unsupervised learning techniques,
+                    primarily cluster analysis and association rule mining, to uncover hidden trends and
+                    relationships within your customer purchase data. This goes beyond simple demographics,
+                    identifying which products are frequently bought together, in what sequence, and by what
+                    types of customers.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    By understanding these intricate buying behaviors, businesses can optimize product
+                    recommendations (e.g., "customers who bought X also bought Y"), personalize marketing campaigns,
+                    strategically bundle products, and streamline inventory placement. This leads to increased average
+                    order value, improved conversion rates, and a more tailored customer journey.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">Customer Segmentation & Analysis</h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-8 text-center">
+                    Visualize key customer and seller segments to understand their buying behaviors and characteristics.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+                        <img src="https://raw.githubusercontent.com/TechwithRahul2003/Olist-E-Commerce-Analysis/main/tsne.png" 
+                             alt="t-SNE Plot of Customer Clusters" 
+                             class="w-full h-full object-contain rounded-md" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/1200x600/E0E0E0/333333?text=Image+Load+Error';">
+                    </div>
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+                        <img src="https://raw.githubusercontent.com/TechwithRahul2003/Olist-E-Commerce-Analysis/main/customer_cluster.png" 
+                             alt="Customer Clusters" 
+                             class="w-full h-full object-contain rounded-md" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/1200x600/E0E0E0/333333?text=Image+Load+Error';">
+                    </div>
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+                        <img src="https://raw.githubusercontent.com/TechwithRahul2003/Olist-E-Commerce-Analysis/main/customer_segment.png" 
+                             alt="Customer Segments" 
+                             class="w-full h-full object-contain rounded-md" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/1200x600/E0E0E0/333333?text=Image+Load+Error';">
+                    </div>
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+                        <img src="https://raw.githubusercontent.com/TechwithRahul2003/Olist-E-Commerce-Analysis/main/seller_segment.png" 
+                             alt="Seller Segments" 
+                             class="w-full h-full object-contain rounded-md" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/1200x600/E0E0E0/333333?text=Image+Load+Error';">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl p-8">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6">Dedicated Dashboard View</h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    Dive deeper into the data with a dedicated Power BI dashboard for buying patterns,
+                    customer segments, and product associations.
+                </p>
+                <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden h-[500px] md:h-[650px] flex items-center justify-center p-4">
+                    <iframe
+                        src="https://app.powerbi.com/reportEmbed?reportId=00fc1ff6-89cc-4224-8175-352eee494708&autoAuth=true&ctid=cc819eae-433f-4ebe-8a84-8e6f68ae7345"
+                        frameborder="0"
+                        allowFullScreen="true"
+                        class="w-full h-full"
+                    ></iframe>
+                </div>
+                <p class="text-center text-gray-600 mt-4">
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-bg text-white py-8 px-6 mt-auto">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 E-commerce Intelligence. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

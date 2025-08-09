@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - E-commerce Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #333;
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70%;
+            height: 3px; /* Reduced height for a cleaner look */
+            background-color: #6366f1; /* Indigo 500 */
+            border-radius: 9999px;
+        }
+        /* Custom styles for the improved header/footer */
+        .header-gradient {
+            background-image: linear-gradient(to right, #6366f1, #8b5cf6); /* Indigo to Violet */
+        }
+        .footer-bg {
+            background-color: #1f2937; /* Darker gray for footer */
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .accordion-item {
+            border-bottom: 1px solid #e2e8f0; /* Light gray border */
+            margin-bottom: 0.5rem;
+        }
+        .accordion-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background-color: #cbd5e1; /* Medium gray for button */
+            color: #1a202c; /* Dark text for button */
+            font-weight: 600;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-button:hover {
+            background-color: #94a3b8; /* Darker gray on hover */
+        }
+        .accordion-button.active {
+            background-color: #64748b; /* Even darker when active */
+            color: #ffffff;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .accordion-content {
+            padding: 1rem 1.25rem;
+            background-color: #f8fafc; /* Lighter background for content */
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .accordion-content.show {
+            max-height: 1000px; /* Adjust as needed, should be larger than content */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+        pre {
+            background-color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Allows text to wrap */
+            word-wrap: break-word; /* Breaks long words */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #94a3b8;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        tr:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="p-4">
+
+     <header class="bg-white shadow-lg py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-gray-800">E-commerce Intelligence</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="{{ url_for('index') }}#overview" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Overview</a></li>
+                    <li><a href="{{ url_for('index') }}#features" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Features</a></li>
+                    <li><a href="{{ url_for('index') }}#dashboard" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Dashboard</a></li>
+                    <li><a href="{{ url_for('support_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Support</a></li>
+                    <li><a href="{{ url_for('team_route') }}" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Connect with Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="text-4xl font-extrabold text-center mb-8 text-gray-800">Delivery Delay Analysis: FAQs</h1>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">1. What is the average delivery delay (in days)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>avg_delivery_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>-12.09</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">2. What is the percentage of delivered orders that were late?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>late_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7.7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">3. What is the delay percentage by customer state?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_state</th>
+                            <th>total_delivered</th>
+                            <th>delayed_orders</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>AL</td><td>438</td><td>105</td><td>23.97</td></tr>
+                        <tr><td>MA</td><td>807</td><td>161</td><td>19.95</td></tr>
+                        <tr><td>PI</td><td>541</td><td>85</td><td>15.71</td></tr>
+                        <tr><td>SE</td><td>382</td><td>59</td><td>15.45</td></tr>
+                        <tr><td>CE</td><td>1480</td><td>217</td><td>14.66</td></tr>
+                        <tr><td>BA</td><td>3845</td><td>522</td><td>13.58</td></tr>
+                        <tr><td>RJ</td><td>14566</td><td>1866</td><td>12.81</td></tr>
+                        <tr><td>ES</td><td>2268</td><td>267</td><td>11.77</td></tr>
+                        <tr><td>RN</td><td>553</td><td>64</td><td>11.57</td></tr>
+                        <tr><td>TO</td><td>329</td><td>38</td><td>11.55</td></tr>
+                        <tr><td>PA</td><td>1057</td><td>121</td><td>11.45</td></tr>
+                        <tr><td>RR</td><td>44</td><td>5</td><td>11.36</td></tr>
+                        <tr><td>PB</td><td>605</td><td>66</td><td>10.91</td></tr>
+                        <tr><td>MS</td><td>837</td><td>89</td><td>10.63</td></tr>
+                        <tr><td>PE</td><td>1796</td><td>179</td><td>9.97</td></tr>
+                        <tr><td>SC</td><td>4142</td><td>383</td><td>9.25</td></tr>
+                        <tr><td>GO</td><td>2305</td><td>172</td><td>7.46</td></tr>
+                        <tr><td>DF</td><td>2397</td><td>178</td><td>7.43</td></tr>
+                        <tr><td>RS</td><td>6312</td><td>421</td><td>6.67</td></tr>
+                        <tr><td>MT</td><td>1060</td><td>68</td><td>6.42</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">4. How many delayed deliveries are there by month?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>month</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>9101</td><td>541</td></tr>
+                        <tr><td>2</td><td>9560</td><td>1241</td></tr>
+                        <tr><td>3</td><td>11194</td><td>1796</td></tr>
+                        <tr><td>4</td><td>10612</td><td>570</td></tr>
+                        <tr><td>5</td><td>12193</td><td>777</td></tr>
+                        <tr><td>6</td><td>10902</td><td>242</td></tr>
+                        <tr><td>7</td><td>11790</td><td>466</td></tr>
+                        <tr><td>8</td><td>12273</td><td>892</td></tr>
+                        <tr><td>9</td><td>4920</td><td>252</td></tr>
+                        <tr><td>10</td><td>5710</td><td>259</td></tr>
+                        <tr><td>11</td><td>8692</td><td>1173</td></tr>
+                        <tr><td>12</td><td>6262</td><td>505</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">5. What is the delay by product category?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>product_category_name</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>casa_conforto_2</td><td>28</td><td>5</td><td>17.86</td></tr>
+                        <tr><td>moveis_colchao_e_cama</td><td>40</td><td>5</td><td>12.5</td></tr>
+                        <tr><td>audio</td><td>375</td><td>46</td><td>12.27</td></tr>
+                        <tr><td>fashion_underwear_e_moda_intima</td><td>139</td><td>16</td><td>11.51</td></tr>
+                        <tr><td>livros_tecnicos</td><td>267</td><td>29</td><td>10.86</td></tr>
+                        <tr><td>construcao_ferramentas_seguranca</td><td>302</td><td>32</td><td>10.6</td></tr>
+                        <tr><td>eletronicos</td><td>2789</td><td>273</td><td>9.79</td></tr>
+                        <tr><td>alimentos</td><td>503</td><td>49</td><td>9.74</td></tr>
+                        <tr><td>casa_conforto</td><td>471</td><td>44</td><td>9.34</td></tr>
+                        <tr><td>beleza_saude</td><td>9747</td><td>869</td><td>8.92</td></tr>
+                        <tr><td>bebes</td><td>3095</td><td>270</td><td>8.72</td></tr>
+                        <tr><td>moveis_escritorio</td><td>1748</td><td>151</td><td>8.64</td></tr>
+                        <tr><td>telefonia</td><td>4578</td><td>385</td><td>8.41</td></tr>
+                        <tr><td>artes_e_artesanato</td><td>24</td><td>2</td><td>8.33</td></tr>
+                        <tr><td>artigos_de_natal</td><td>145</td><td>12</td><td>8.28</td></tr>
+                        <tr><td>instrumentos_musicais</td><td>682</td><td>56</td><td>8.21</td></tr>
+                        <tr><td>relogios_presentes</td><td>6030</td><td>495</td><td>8.21</td></tr>
+                        <tr><td>automotivo</td><td>4259</td><td>346</td><td>8.12</td></tr>
+                        <tr><td>moveis_decoracao</td><td>8554</td><td>687</td><td>8.03</td></tr>
+                        <tr><td>casa_construcao</td><td>623</td><td>50</td><td>8.03</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">6. Who are the sellers with the most delayed deliveries?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>seller_id</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>586a871d4f1221763dd00051283d0695</td><td>2</td><td>2</td><td>100.0</td></tr>
+                        <tr><td>f5fea3ffed6c2e8893a74421b8c0677e</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>1f2eebc0e970fd3c49e7a6020c6a81d4</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>c13ef0cfbe42f190770540d68c919783</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>791cfcfe22fe4a7714b14d59a7f34c67</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>8e670472e453ba34a66a7b32085750d7</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>8629a7efec1aab2572dd262529d89958</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>1b4b28463457a256e259e844a56c5258</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>19484c79cef6c062c3f15d266e700a12</td><td>1</td><td>1</td><td>100.0</td></tr>
+                        <tr><td>9da15f4a4ea758d9e2101375d697813a</td><td>1</td><td>1</td><td>100.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">7. What is the average approval-to-shipping delay for late vs. on-time deliveries?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>delivery_status</th>
+                            <th>avg_approval_to_ship_days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>On Time</td><td>2.53</td></tr>
+                        <tr><td>Late</td><td>5.27</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">8. Do high-value orders get delayed more?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>order_value_segment</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Low/Medium Value</td><td>52554</td><td>3856</td><td>7.34</td></tr>
+                        <tr><td>High Value</td><td>60655</td><td>4858</td><td>8.01</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">9. What is the trend of delivery delays over time (monthly)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>month</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>9101</td><td>541</td></tr>
+                        <tr><td>2</td><td>9560</td><td>1241</td></tr>
+                        <tr><td>3</td><td>11194</td><td>1796</td></tr>
+                        <tr><td>4</td><td>10612</td><td>570</td></tr>
+                        <tr><td>5</td><td>12193</td><td>777</td></tr>
+                        <tr><td>6</td><td>10902</td><td>242</td></tr>
+                        <tr><td>7</td><td>11790</td><td>466</td></tr>
+                        <tr><td>8</td><td>12273</td><td>892</td></tr>
+                        <tr><td>9</td><td>4920</td><td>252</td></tr>
+                        <tr><td>10</td><td>5710</td><td>259</td></tr>
+                        <tr><td>11</td><td>8692</td><td>1173</td></tr>
+                        <tr><td>12</td><td>6262</td><td>505</td></tr>
+                        <tr><td>2018-01</td><td>8146</td><td>516</td></tr>
+                        <tr><td>2018-02</td><td>7670</td><td>1191</td></tr>
+                        <tr><td>2018-03</td><td>8184</td><td>1639</td></tr>
+                        <tr><td>2018-04</td><td>7987</td><td>381</td></tr>
+                        <tr><td>2018-05</td><td>8019</td><td>635</td></tr>
+                        <tr><td>2018-06</td><td>7262</td><td>100</td></tr>
+                        <tr><td>2016-10</td><td>328</td><td>2</td></tr>
+                        <tr><td>2016-12</td><td>1</td><td>0</td></tr>
+                        <tr><td>2017-01</td><td>955</td><td>25</td></tr>
+                        <tr><td>2017-02</td><td>1890</td><td>50</td></tr>
+                        <tr><td>2017-03</td><td>3010</td><td>157</td></tr>
+                        <tr><td>2017-04</td><td>2625</td><td>189</td></tr>
+                        <tr><td>2017-05</td><td>4174</td><td>142</td></tr>
+                        <tr><td>2017-06</td><td>3640</td><td>142</td></tr>
+                        <tr><td>2017-07</td><td>4666</td><td>166</td></tr>
+                        <tr><td>2017-08</td><td>4973</td><td>154</td></tr>
+                        <tr><td>2017-09</td><td>4920</td><td>252</td></tr>
+                        <tr><td>2017-10</td><td>5382</td><td>257</td></tr>
+                        <tr><td>2017-11</td><td>8692</td><td>1173</td></tr>
+                        <tr><td>2017-12</td><td>6261</td><td>505</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">10. What is the actual vs. estimated delivery time by state?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_state</th>
+                            <th>avg_actual_delivery_days</th>
+                            <th>avg_estimated_delivery_days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>RR</td><td>28.2</td><td>46.7</td></tr>
+                        <tr><td>AP</td><td>28.09</td><td>46.76</td></tr>
+                        <tr><td>AM</td><td>26.32</td><td>46.16</td></tr>
+                        <tr><td>AL</td><td>24.46</td><td>33.15</td></tr>
+                        <tr><td>PA</td><td>23.42</td><td>37.91</td></tr>
+                        <tr><td>MA</td><td>21.49</td><td>31.49</td></tr>
+                        <tr><td>SE</td><td>21.22</td><td>31.26</td></tr>
+                        <tr><td>CE</td><td>20.58</td><td>32.02</td></tr>
+                        <tr><td>AC</td><td>20.51</td><td>41.79</td></tr>
+                        <tr><td>PB</td><td>20.39</td><td>33.63</td></tr>
+                        <tr><td>RO</td><td>19.74</td><td>39.62</td></tr>
+                        <tr><td>RN</td><td>19.63</td><td>33.3</td></tr>
+                        <tr><td>PI</td><td>19.26</td><td>30.76</td></tr>
+                        <tr><td>BA</td><td>19.1</td><td>30.15</td></tr>
+                        <tr><td>PE</td><td>18.15</td><td>31.74</td></tr>
+                        <tr><td>MT</td><td>17.8</td><td>32.31</td></tr>
+                        <tr><td>TO</td><td>17.11</td><td>29.57</td></tr>
+                        <tr><td>ES</td><td>15.47</td><td>26.26</td></tr>
+                        <tr><td>MS</td><td>15.42</td><td>26.65</td></tr>
+                        <tr><td>GO</td><td>15.19</td><td>27.64</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">11. Which product categories have the highest average delivery delays and order count?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>product_category_name</th>
+                            <th>total_orders</th>
+                            <th>avg_delay_days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>artes_e_artesanato</td><td>24</td><td>-6.79</td></tr>
+                        <tr><td>moveis_colchao_e_cama</td><td>40</td><td>-7.18</td></tr>
+                        <tr><td>casa_conforto_2</td><td>28</td><td>-8.0</td></tr>
+                        <tr><td>portateis_cozinha_e_alimentacao</td><td>14</td><td>-9.5</td></tr>
+                        <tr><td>casa_conforto</td><td>471</td><td>-9.79</td></tr>
+                        <tr><td>alimentos</td><td>503</td><td>-9.95</td></tr>
+                        <tr><td>pc_gamer</td><td>9</td><td>-10.0</td></tr>
+                        <tr><td>audio</td><td>375</td><td>-10.18</td></tr>
+                        <tr><td>fashion_underwear_e_moda_intima</td><td>139</td><td>-10.73</td></tr>
+                        <tr><td>livros_importados</td><td>59</td><td>-11.05</td></tr>
+                        <tr><td>eletronicos</td><td>2789</td><td>-11.16</td></tr>
+                        <tr><td>construcao_ferramentas_seguranca</td><td>302</td><td>-11.18</td></tr>
+                        <tr><td>cine_foto</td><td>72</td><td>-11.22</td></tr>
+                        <tr><td>fraldas_higiene</td><td>37</td><td>-11.35</td></tr>
+                        <tr><td>fashion_roupa_feminina</td><td>46</td><td>-11.35</td></tr>
+                        <tr><td>livros_tecnicos</td><td>267</td><td>-11.39</td></tr>
+                        <tr><td>telefonia</td><td>4578</td><td>-11.39</td></tr>
+                        <tr><td>automotivo</td><td>4259</td><td>-11.47</td></tr>
+                        <tr><td>bebidas</td><td>371</td><td>-11.54</td></tr>
+                        <tr><td>instrumentos_musicais</td><td>682</td><td>-11.55</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">12. What is the relation between shipping distance and delay (using city mismatch as proxy for distance)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>shipping_zone</th>
+                            <th>total_orders</th>
+                            <th>avg_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Same City</td><td>5839</td><td>-9.41</td></tr>
+                        <tr><td>Different City</td><td>107370</td><td>-12.24</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">13. Which sellers are consistently delivering late across categories?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>seller_id</th>
+                            <th>product_category_name</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>bbad7e518d7af88a0044549424755a3d</td><td>ferramentas_jardim</td><td>14</td><td>10</td><td>71.43</td></tr>
+                        <tr><td>2709af9587499e95e804f3885a717f22</td><td>beleza_saude</td><td>36</td><td>21</td><td>58.33</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">14. What is the correlation between freight value and average delay per month?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>month</th>
+                            <th>avg_freight</th>
+                            <th>avg_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2016-10</td><td>19.37</td><td>-36.27</td></tr>
+                        <tr><td>2016-12</td><td>8.72</td><td>-22.0</td></tr>
+                        <tr><td>2017-01</td><td>17.29</td><td>-27.99</td></tr>
+                        <tr><td>2017-02</td><td>19.99</td><td>-19.39</td></tr>
+                        <tr><td>2017-03</td><td>19.11</td><td>-12.44</td></tr>
+                        <tr><td>2017-04</td><td>19.32</td><td>-13.28</td></tr>
+                        <tr><td>2017-05</td><td>19.27</td><td>-13.45</td></tr>
+                        <tr><td>2017-06</td><td>19.49</td><td>-12.5</td></tr>
+                        <tr><td>2017-07</td><td>19.33</td><td>-12.66</td></tr>
+                        <tr><td>2017-08</td><td>19.06</td><td>-13.36</td></tr>
+                        <tr><td>2017-09</td><td>19.86</td><td>-11.37</td></tr>
+                        <tr><td>2017-10</td><td>19.74</td><td>-12.1</td></tr>
+                        <tr><td>2017-11</td><td>19.54</td><td>-8.39</td></tr>
+                        <tr><td>2017-12</td><td>18.98</td><td>-13.14</td></tr>
+                        <tr><td>2018-01</td><td>19.14</td><td>-13.13</td></tr>
+                        <tr><td>2018-02</td><td>18.63</td><td>-8.41</td></tr>
+                        <tr><td>2018-03</td><td>20.86</td><td>-6.97</td></tr>
+                        <tr><td>2018-04</td><td>20.4</td><td>-13.09</td></tr>
+                        <tr><td>2018-05</td><td>19.4</td><td>-12.38</td></tr>
+                        <tr><td>2018-06</td><td>22.42</td><td>-19.34</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">15. What is the percentage of late orders with low review scores (1 or 2)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>late_orders</th>
+                            <th>low_scores</th>
+                            <th>low_score_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>8714</td><td>4758</td><td>54.60</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">16. Does longer approval time lead to a higher chance of delay?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>approval_speed</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Fast Approval</td><td>97802</td><td>7233</td><td>7.40</td></tr>
+                        <tr><td>Slow Approval</td><td>15407</td><td>1481</td><td>9.61</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">17. What is the delay distribution in buckets (0–3, 4–7, >7 days)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>delay_bucket</th>
+                            <th>total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>null</td><td>1468</td></tr>
+                        <tr><td>4–7 Days Late</td><td>1993</td></tr>
+                        <tr><td>Over 7 Days Late</td><td>3140</td></tr>
+                        <tr><td>1–3 Days Late</td><td>2113</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">18. What is the average delay by region type (urban vs rural)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_city</th>
+                            <th>region_type</th>
+                            <th>avg_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>jijoca de jericoacoara</td><td>Rural</td><td>-23.25</td></tr>
+                        <tr><td>camacari</td><td>Rural</td><td>-7.49</td></tr>
+                        <tr><td>iepe</td><td>Rural</td><td>-11.17</td></tr>
+                        <tr><td>redencao da serra</td><td>Rural</td><td>-15.0</td></tr>
+                        <tr><td>igrejinha</td><td>Rural</td><td>-15.5</td></tr>
+                        <tr><td>arapiraca</td><td>Rural</td><td>-8.79</td></tr>
+                        <tr><td>barracao</td><td>Rural</td><td>-14.0</td></tr>
+                        <tr><td>pote</td><td>Rural</td><td>-15.0</td></tr>
+                        <tr><td>itaberaba</td><td>Rural</td><td>-12.89</td></tr>
+                        <tr><td>divino das laranjeiras</td><td>Rural</td><td>-13.0</td></tr>
+                        <tr><td>aguas de sao pedro</td><td>Rural</td><td>-12.0</td></tr>
+                        <tr><td>itanhaem</td><td>Rural</td><td>-11.88</td></tr>
+                        <tr><td>boa vista</td><td>Rural</td><td>-18.0</td></tr>
+                        <tr><td>ijui</td><td>Rural</td><td>-15.49</td></tr>
+                        <tr><td>brusque</td><td>Rural</td><td>-11.5</td></tr>
+                        <tr><td>sao joao da barra</td><td>Rural</td><td>-12.0</td></tr>
+                        <tr><td>cachoeira</td><td>Rural</td><td>-24.8</td></tr>
+                        <tr><td>pacuja</td><td>Rural</td><td>-18.0</td></tr>
+                        <tr><td>buritama</td><td>Rural</td><td>-8.17</td></tr>
+                        <tr><td>astolfo dutra</td><td>Rural</td><td>-19.5</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">19. What are the delays in high-density vs. low-density states?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_state</th>
+                            <th>total_orders</th>
+                            <th>delayed</th>
+                            <th>delay_percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SP</td><td>47821</td><td>2655</td><td>5.55</td></tr>
+                        <tr><td>RJ</td><td>14566</td><td>1866</td><td>12.81</td></tr>
+                        <tr><td>MG</td><td>13219</td><td>695</td><td>5.26</td></tr>
+                        <tr><td>RS</td><td>6312</td><td>421</td><td>6.67</td></tr>
+                        <tr><td>PR</td><td>5790</td><td>273</td><td>4.72</td></tr>
+                        <tr><td>SC</td><td>4142</td><td>383</td><td>9.25</td></tr>
+                        <tr><td>BA</td><td>3845</td><td>522</td><td>13.58</td></tr>
+                        <tr><td>DF</td><td>2397</td><td>178</td><td>7.43</td></tr>
+                        <tr><td>GO</td><td>2305</td><td>172</td><td>7.46</td></tr>
+                        <tr><td>ES</td><td>2268</td><td>267</td><td>11.77</td></tr>
+                        <tr><td>PE</td><td>1796</td><td>179</td><td>9.97</td></tr>
+                        <tr><td>CE</td><td>1480</td><td>217</td><td>14.66</td></tr>
+                        <tr><td>MT</td><td>1060</td><td>68</td><td>6.42</td></tr>
+                        <tr><td>PA</td><td>1057</td><td>121</td><td>11.45</td></tr>
+                        <tr><td>MS</td><td>837</td><td>89</td><td>10.63</td></tr>
+                        <tr><td>MA</td><td>807</td><td>161</td><td>19.95</td></tr>
+                        <tr><td>PB</td><td>605</td><td>66</td><td>10.91</td></tr>
+                        <tr><td>RN</td><td>553</td><td>64</td><td>11.57</td></tr>
+                        <tr><td>PI</td><td>541</td><td>85</td><td>15.71</td></tr>
+                        <tr><td>AL</td><td>438</td><td>105</td><td>23.97</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">20. What is the day-of-week effect on delivery delay?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>purchase_day</th>
+                            <th>total_orders</th>
+                            <th>avg_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>13447</td><td>-12.55</td></tr>
+                        <tr><td>2</td><td>18373</td><td>-11.51</td></tr>
+                        <tr><td>3</td><td>18407</td><td>-11.98</td></tr>
+                        <tr><td>4</td><td>17674</td><td>-12.08</td></tr>
+                        <tr><td>5</td><td>16908</td><td>-12.21</td></tr>
+                        <tr><td>6</td><td>16192</td><td>-11.93</td></tr>
+                        <tr><td>7</td><td>12208</td><td>-12.68</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">21. Which product categories have the highest average delay, by state?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>product_category_name</th>
+                            <th>customer_state</th>
+                            <th>avg_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>instrumentos_musicais</td><td>SE</td><td>166.0</td></tr>
+                        <tr><td>moveis_decoracao</td><td>AP</td><td>144.0</td></tr>
+                        <tr><td>casa_conforto</td><td>RN</td><td>137.0</td></tr>
+                        <tr><td>esporte_lazer</td><td>RR</td><td>132.0</td></tr>
+                        <tr><td>alimentos</td><td>AM</td><td>104.0</td></tr>
+                        <tr><td>eletrodomesticos_2</td><td>MG</td><td>84.0</td></tr>
+                        <tr><td>consoles_games</td><td>PA</td><td>60.67</td></tr>
+                        <tr><td>utilidades_domesticas</td><td>GO</td><td>59.0</td></tr>
+                        <tr><td>automotivo</td><td>SE</td><td>51.75</td></tr>
+                        <tr><td>bebidas</td><td>RJ</td><td>49.0</td></tr>
+                        <tr><td>moveis_colchao_e_cama</td><td>SC</td><td>48.0</td></tr>
+                        <tr><td>alimentos</td><td>RJ</td><td>45.5</td></tr>
+                        <tr><td>moveis_escritorio</td><td>RS</td><td>44.25</td></tr>
+                        <tr><td>bebidas</td><td>RS</td><td>40.0</td></tr>
+                        <tr><td>moveis_escritorio</td><td>PI</td><td>36.4</td></tr>
+                        <tr><td>artigos_de_natal</td><td>CE</td><td>35.0</td></tr>
+                        <tr><td>moveis_escritorio</td><td>MT</td><td>33.0</td></tr>
+                        <tr><td>construcao_ferramentas_seguranca</td><td>CE</td><td>33.0</td></tr>
+                        <tr><td>construcao_ferramentas_seguranca</td><td>SC</td><td>33.0</td></tr>
+                        <tr><td>eletroportateis</td><td>GO</td><td>32.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">22. What is the correlation between the number of items in an order and delay?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>order_id</th>
+                            <th>total_items</th>
+                            <th>delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>895ab968e7bb0d565983800cccd56598</td><td>63</td><td>-16</td></tr>
+                        <tr><td>fedcd9f7ccdc8cba3a164d115e6d7681</td><td>38</td><td>-5</td></tr>
+                        <tr><td>ccf804e764ed5650c608752b97ba80d7</td><td>26</td><td>-6</td></tr>
+                        <tr><td>68986e4324f6a2148b82173163806958</td><td>24</td><td>-12</td></tr>
+                        <tr><td>465c2e1bee4561cb38c117b96621372b</td><td>24</td><td>-9</td></tr>
+                        <tr><td>6d58638e32674bebe112613d2b70014e</td><td>24</td><td>-11</td></tr>
+                        <tr><td>a3725dfe487d359b583f707f123d7681</td><td>24</td><td>-4</td></tr>
+                        <tr><td>c6492b842ac190db86c117b96621372b</td><td>24</td><td>-9</td></tr>
+                        <tr><td>5a3b1c29a49756e75293800cccd56598</td><td>22</td><td>-12</td></tr>
+                        <tr><td>285c2e15bebd4ac83a164d115e6d7681</td><td>22</td><td>-13</td></tr>
+                        <tr><td>1c11d0f4353b31ac3a164d115e6d7681</td><td>21</td><td>-17</td></tr>
+                        <tr><td>8272b63d03f5f79c56800cccd56598</td><td>21</td><td>3</td></tr>
+                        <tr><td>958c6a70e60365b57d7681800cccd56598</td><td>21</td><td>-7</td></tr>
+                        <tr><td>364f451ee38a4268d7681800cccd56598</td><td>20</td><td>-8</td></tr>
+                        <tr><td>1b15974a0141d54e3a164d115e6d7681</td><td>20</td><td>-3</td></tr>
+                        <tr><td>ee9ca989fc93ba09a164d115e6d7681</td><td>19</td><td>-6</td></tr>
+                        <tr><td>9c54a1816e487456b3800cccd56598</td><td>16</td><td>-22</td></tr>
+                        <tr><td>3a1ce4053005d669a164d115e6d7681</td><td>16</td><td>-18</td></tr>
+                        <tr><td>4c08f008753759d67a164d115e6d7681</td><td>15</td><td>-29</td></tr>
+                        <tr><td>4bfcba9e084f46c8e3800cccd56598</td><td>15</td><td>-8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">23. What is the relationship between repeated late deliveries and review score?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_id</th>
+                            <th>late_order_count</th>
+                            <th>avg_review_score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ed532487db04478df883800cccd56598</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>810b0fa7210f36cdb3800cccd56598</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>f8145d9ea34724ad4a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>641e3183819490fc2a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>aae53fd05ec93f09b3800cccd56598</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>6e598f3c0385872ad3800cccd56598</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>29d896af6952f87f4a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>5d8712db3109f5c3b3800cccd56598</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>23090a6b2fc85e04d3800cccd56598</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>6e66d0911bc117a0a3800cccd56598</td><td>3</td><td>1.0</td></tr>
+                        <tr><td>97a1a7d434c0aec55a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>bd7f3abe8cf23c1f8a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>ab0d603f0c96d5bc3a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>96a38239347713db4a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>14dc25a6ed75c0301a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>7abba8fbc4eb6715fa164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>6fca0539c47aec27ba164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>6c8a03b35eb1de3c0a164d115e6d7681</td><td>4</td><td>1.0</td></tr>
+                        <tr><td>308afed7ca5923979a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                        <tr><td>ac055528f5a69cba5a164d115e6d7681</td><td>2</td><td>1.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">24. What are the delivery delays near holidays (December and January)?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>order_id</th>
+                            <th>order_estimated_delivery_date</th>
+                            <th>order_delivered_customer_date</th>
+                            <th>delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1edf3cfb4e85e8094a164d115e6d7681</td><td>2017-12-18 00:00:00</td><td>2018-01-02 12:09:51</td><td>15</td></tr>
+                        <tr><td>9855d762d535fda66a164d115e6d7681</td><td>2017-12-22 00:00:00</td><td>2017-12-28 16:33:46</td><td>6</td></tr>
+                        <tr><td>9855d762d535fda66a164d115e6d7681</td><td>2017-12-22 00:00:00</td><td>2017-12-28 16:33:46</td><td>6</td></tr>
+                        <tr><td>8c3651ff7833e7345a164d115e6d7681</td><td>2018-01-04 00:00:00</td><td>2018-01-06 17:25:07</td><td>2</td></tr>
+                        <tr><td>8b79235214c377ff8a164d115e6d7681</td><td>2017-12-12 00:00:00</td><td>2017-12-19 18:53:11</td><td>7</td></tr>
+                        <tr><td>f5a511e584053180da164d115e6d7681</td><td>2017-12-13 00:00:00</td><td>2017-12-19 19:57:04</td><td>6</td></tr>
+                        <tr><td>045797b656bf63356a164d115e6d7681</td><td>2017-12-22 00:00:00</td><td>2017-12-23 01:05:55</td><td>1</td></tr>
+                        <tr><td>b8b6924f004e19192a164d115e6d7681</td><td>2017-12-18 00:00:00</td><td>2017-12-20 20:38:46</td><td>2</td></tr>
+                        <tr><td>faa3c806c150cf6f0a164d115e6d7681</td><td>2017-12-20 00:00:00</td><td>2018-01-19 01:08:41</td><td>30</td></tr>
+                        <tr><td>8ce19cd80af40e6cba164d115e6d7681</td><td>2017-12-29 00:00:00</td><td>2018-01-04 14:18:53</td><td>6</td></tr>
+                        <tr><td>67bc7ff7cf5396dc1a164d115e6d7681</td><td>2017-12-27 00:00:00</td><td>2017-12-29 15:16:33</td><td>2</td></tr>
+                        <tr><td>4801b9cf238c2c909a164d115e6d7681</td><td>2017-12-29 00:00:00</td><td>2018-01-08 20:54:56</td><td>10</td></tr>
+                        <tr><td>51ee2d580bfba3ac0a164d115e6d7681</td><td>2017-12-19 00:00:00</td><td>2017-12-20 18:10:43</td><td>1</td></tr>
+                        <tr><td>961d9e5c68462472a164d115e6d7681</td><td>2017-12-12 00:00:00</td><td>2017-12-12 00:39:51</td><td>0</td></tr>
+                        <tr><td>396f84886eb4046aaa164d115e6d7681</td><td>2018-01-02 00:00:00</td><td>2018-01-08 15:50:32</td><td>6</td></tr>
+                        <tr><td>341d0ee42d08b192ca164d115e6d7681</td><td>2017-12-22 00:00:00</td><td>2018-01-03 18:09:00</td><td>12</td></tr>
+                        <tr><td>d55cd104a6a05987aa164d115e6d7681</td><td>2017-12-27 00:00:00</td><td>2018-01-16 17:09:31</td><td>20</td></tr>
+                        <tr><td>d55cd104a6a05987aa164d115e6d7681</td><td>2017-12-27 00:00:00</td><td>2018-01-16 17:09:31</td><td>20</td></tr>
+                        <tr><td>6621d32aa07764fa7a164d115e6d7681</td><td>2017-12-21 00:00:00</td><td>2018-01-05 19:54:25</td><td>15</td></tr>
+                        <tr><td>76488d1a3fac0eda3a164d115e6d7681</td><td>2017-12-14 00:00:00</td><td>2017-12-21 15:54:41</td><td>7</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">25. What is the relationship between freight value and delay?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>freight_value</th>
+                            <th>delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>8.72</td><td>-8</td></tr>
+                        <tr><td>8.72</td><td>-8</td></tr>
+                        <tr><td>8.72</td><td>-8</td></tr>
+                        <tr><td>7.78</td><td>-10</td></tr>
+                        <tr><td>7.78</td><td>-8</td></tr>
+                        <tr><td>14.1</td><td>-6</td></tr>
+                        <tr><td>7.79</td><td>-7</td></tr>
+                        <tr><td>7.79</td><td>-3</td></tr>
+                        <tr><td>14.28</td><td>-14</td></tr>
+                        <tr><td>7.79</td><td>-11</td></tr>
+                        <tr><td>14.28</td><td>-13</td></tr>
+                        <tr><td>7.78</td><td>-7</td></tr>
+                        <tr><td>7.78</td><td>-7</td></tr>
+                        <tr><td>7.78</td><td>-11</td></tr>
+                        <tr><td>7.78</td><td>-7</td></tr>
+                        <tr><td>7.78</td><td>-7</td></tr>
+                        <tr><td>11.73</td><td>-9</td></tr>
+                        <tr><td>15.1</td><td>-12</td></tr>
+                        <tr><td>11.73</td><td>-8</td></tr>
+                        <tr><td>7.78</td><td>-8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">26. What is the percentage of early, on-time, and late deliveries by state?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_state</th>
+                            <th>early</th>
+                            <th>on_time</th>
+                            <th>late</th>
+                            <th>total_orders</th>
+                            <th>late_pct</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>AL</td><td>333</td><td>0</td><td>105</td><td>438</td><td>23.97</td></tr>
+                        <tr><td>MA</td><td>646</td><td>0</td><td>161</td><td>807</td><td>19.95</td></tr>
+                        <tr><td>PI</td><td>456</td><td>0</td><td>85</td><td>541</td><td>15.71</td></tr>
+                        <tr><td>SE</td><td>323</td><td>0</td><td>59</td><td>382</td><td>15.45</td></tr>
+                        <tr><td>CE</td><td>1263</td><td>0</td><td>217</td><td>1480</td><td>14.66</td></tr>
+                        <tr><td>BA</td><td>3323</td><td>0</td><td>522</td><td>3845</td><td>13.58</td></tr>
+                        <tr><td>RJ</td><td>12703</td><td>0</td><td>1866</td><td>14569</td><td>12.81</td></tr>
+                        <tr><td>ES</td><td>2001</td><td>0</td><td>267</td><td>2268</td><td>11.77</td></tr>
+                        <tr><td>RN</td><td>489</td><td>0</td><td>64</td><td>553</td><td>11.57</td></tr>
+                        <tr><td>TO</td><td>291</td><td>0</td><td>38</td><td>329</td><td>11.55</td></tr>
+                        <tr><td>PA</td><td>936</td><td>0</td><td>121</td><td>1057</td><td>11.45</td></tr>
+                        <tr><td>RR</td><td>39</td><td>0</td><td>5</td><td>44</td><td>11.36</td></tr>
+                        <tr><td>PB</td><td>539</td><td>0</td><td>66</td><td>605</td><td>10.91</td></tr>
+                        <tr><td>MS</td><td>748</td><td>0</td><td>89</td><td>837</td><td>10.63</td></tr>
+                        <tr><td>PE</td><td>1617</td><td>0</td><td>179</td><td>1796</td><td>9.97</td></tr>
+                        <tr><td>SC</td><td>3760</td><td>0</td><td>383</td><td>4143</td><td>9.24</td></tr>
+                        <tr><td>GO</td><td>2133</td><td>0</td><td>172</td><td>2305</td><td>7.46</td></tr>
+                        <tr><td>DF</td><td>2219</td><td>0</td><td>178</td><td>2397</td><td>7.43</td></tr>
+                        <tr><td>RS</td><td>5891</td><td>0</td><td>421</td><td>6312</td><td>6.67</td></tr>
+                        <tr><td>MT</td><td>992</td><td>0</td><td>68</td><td>1060</td><td>6.42</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">27. What are the peak delay periods?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>delivery_date</th>
+                            <th>delayed_orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2018-04-03</td><td>113</td></tr>
+                        <tr><td>2018-03-23</td><td>105</td></tr>
+                        <tr><td>2018-03-29</td><td>100</td></tr>
+                        <tr><td>2018-04-04</td><td>100</td></tr>
+                        <tr><td>2018-04-10</td><td>97</td></tr>
+                        <tr><td>2018-03-28</td><td>96</td></tr>
+                        <tr><td>2018-04-18</td><td>89</td></tr>
+                        <tr><td>2018-04-11</td><td>85</td></tr>
+                        <tr><td>2018-03-27</td><td>84</td></tr>
+                        <tr><td>2017-12-19</td><td>83</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">28. What is the impact of delay on repeat purchases?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>customer_id</th>
+                            <th>total_orders</th>
+                            <th>delayed_orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="3" class="text-center text-gray-500">No data available for this query result.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">29. What is the average delay per seller and product category?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>seller_id</th>
+                            <th>product_category_name</th>
+                            <th>avg_delay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>df683dfda87bf71ac3800cccd56598</td><td>moveis_decoracao</td><td>167.0</td></tr>
+                        <tr><td>c847e075301870dd1a164d115e6d7681</td><td>instrumentos_musicais</td><td>166.0</td></tr>
+                        <tr><td>e83c76265fc54bf41a164d115e6d7681</td><td>automotivo</td><td>159.0</td></tr>
+                        <tr><td>a7f13822ceb966b07a164d115e6d7681</td><td>moveis_escritorio</td><td>155.0</td></tr>
+                        <tr><td>4fb41dff7c5013697a164d115e6d7681</td><td>relogios_presentes</td><td>134.0</td></tr>
+                        <tr><td>1782ce2db72c3dda6a164d115e6d7681</td><td>esporte_lazer</td><td>132.0</td></tr>
+                        <tr><td>cac4c8e7b1ca6252da164d115e6d7681</td><td>utilidades_domesticas</td><td>128.8</td></tr>
+                        <tr><td>95e03ca3d4146e401a164d115e6d7681</td><td>moveis_decoracao</td><td>110.0</td></tr>
+                        <tr><td>93dc87703c046b603a164d115e6d7681</td><td>relogios_presentes</td><td>106.0</td></tr>
+                        <tr><td>2a1348e9addc1af5aa164d115e6d7681</td><td>ferramentas_jardim</td><td>104.0</td></tr>
+                        <tr><td>056b4ada5bbc2c50ca164d115e6d7681</td><td>eletronicos</td><td>104.0</td></tr>
+                        <tr><td>7a91bf945c6fae077a164d115e6d7681</td><td>beleza_saude</td><td>97.0</td></tr>
+                        <tr><td>8cc6a0e5738e61a87a164d115e6d7681</td><td>papelaria</td><td>96.0</td></tr>
+                        <tr><td>e09887ca8c7bf8a46a164d115e6d7681</td><td>moveis_decoracao</td><td>91.0</td></tr>
+                        <tr><td>2a1348e9addc1af5aa164d115e6d7681</td><td>consoles_games</td><td>89.5</td></tr>
+                        <tr><td>054694fa03fe82ceca164d115e6d7681</td><td>eletrodomesticos_2</td><td>84.5</td></tr>
+                        <tr><td>9b522ba7eae9e1d04a164d115e6d7681</td><td>moveis_decoracao</td><td>80.0</td></tr>
+                        <tr><td>634964b17796e6430a164d115e6d7681</td><td>automotivo</td><td>79.0</td></tr>
+                        <tr><td>48436dade18ac8b2ba164d115e6d7681</td><td>brinquedos</td><td>78.0</td></tr>
+                        <tr><td>72146da5774cabf26a164d115e6d7681</td><td>sinalizacao_e_seguranca</td><td>76.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(this)">
+                <span class="text-xl">30. What is the average delay (in days) per seller and which 5 sellers have the highest cumulative delivery delays?</span>
+                <svg class="arrow-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <p class="font-bold mt-4 mb-2">Result:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>seller_id</th>
+                            <th>total_orders</th>
+                            <th>avg_delay_days</th>
+                            <th>total_delay_days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>4a3ca9315b744ce9f3800cccd56598</td><td>195</td><td>11.46</td><td>2235</td></tr>
+                        <tr><td>1f50f920176fa81da3800cccd56598</td><td>160</td><td>10.39</td><td>1663</td></tr>
+                        <tr><td>7c67e1448b00f6e96a164d115e6d7681</td><td>123</td><td>11.76</td><td>1446</td></tr>
+                        <tr><td>4869f7a5dfa277a7da164d115e6d7681</td><td>129</td><td>9.58</td><td>1236</td></tr>
+                        <tr><td>da8622b14eb17ae28a164d115e6d7681</td><td>97</td><td>10.56</td><td>1024</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            button.classList.toggle('active');
+            content.classList.toggle('show');
+            if (content.classList.contains('show')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = "0";
+            }
+        }
+
+        // Adjust max-height on window resize
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.accordion-content.show').forEach(content => {
+                content.style.maxHeight = content.scrollHeight + "px";
+            });
+        });
+    </script>
+</body>
+</html>
